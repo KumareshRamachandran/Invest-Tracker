@@ -4,10 +4,19 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY environment variables are not set. Authentication will not work.');
+  throw new Error(
+    'Missing Supabase environment variables. Check your .env file.'
+  );
 }
 
 export const supabase = createClient(
-  supabaseUrl || 'https://example.supabase.co',
-  supabaseAnonKey || 'demo-key'
-); 
+  supabaseUrl,
+  supabaseAnonKey,
+  {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    },
+  }
+);

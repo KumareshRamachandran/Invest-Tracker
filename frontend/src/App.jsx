@@ -14,6 +14,10 @@ import StockDetail from './pages/StockDetail';
 import News from './pages/News';
 import MarketCalendar from './pages/MarketCalendar';
 
+console.log("SUPABASE URL:", import.meta.env.VITE_SUPABASE_URL);
+console.log("SUPABASE KEY:", import.meta.env.VITE_SUPABASE_ANON_KEY);
+
+
 export default function App() {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
