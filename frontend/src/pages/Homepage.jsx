@@ -111,9 +111,9 @@ const Homepage = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "Building a Diversified Portfolio in 2024",
+      title: "Building a Diversified Portfolio in 2026",
       category: "Investment Strategy",
-      date: "Jan 15, 2024",
+      date: "Jun 18, 2026",
       author: "Sarah Johnson",
       readTime: "8 min read",
       image: "from-blue-400 to-purple-500",
@@ -146,7 +146,7 @@ const Homepage = () => {
             However, it's important to remember that technology should enhance, not replace, fundamental investment principles. The core tenets of diversification—spreading risk across uncorrelated assets—remain unchanged.
           </p>
           
-          <h3 class="text-2xl font-bold mt-8 mb-4">Risk Management in 2024</h3>
+          <h3 class="text-2xl font-bold mt-8 mb-4">Risk Management in 2026</h3>
           <p class="leading-relaxed">
             With increased market volatility and geopolitical uncertainty, risk management has become paramount. Consider implementing:
           </p>
@@ -168,7 +168,7 @@ const Homepage = () => {
       id: 2,
       title: "Understanding Market Volatility",
       category: "Market Analysis",
-      date: "Jan 12, 2024",
+      date: "Jun 12, 2026",
       author: "Michael Chen",
       readTime: "6 min read",
       image: "from-green-400 to-blue-500",
@@ -231,14 +231,14 @@ const Homepage = () => {
       id: 3,
       title: "AI in Investment Management",
       category: "Technology",
-      date: "Jan 10, 2024",
+      date: "Jun 10, 2026",
       author: "Dr. Emily Rodriguez",
       readTime: "10 min read",
       image: "from-purple-400 to-pink-500",
       content: `
         <div class="space-y-6">
           <p class="text-lg leading-relaxed">
-            Artificial Intelligence is revolutionizing the investment management industry, from algorithmic trading to portfolio optimization and risk assessment. As we move further into 2024, AI technologies are becoming increasingly sophisticated and accessible to both institutional and individual investors.
+            Artificial Intelligence is revolutionizing the investment management industry, from algorithmic trading to portfolio optimization and risk assessment. As we move further into 2026, AI technologies are becoming increasingly sophisticated and accessible to both institutional and individual investors.
           </p>
           
           <h3 class="text-2xl font-bold mt-8 mb-4">The Evolution of AI in Finance</h3>
@@ -1433,7 +1433,7 @@ const Homepage = () => {
           }`}>
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-                © 2024 PortfolioTracker. All rights reserved.
+                © {new Date().getFullYear()} PortfolioTracker. All rights reserved.
               </p>
               <div className="flex items-center space-x-6">
                 <button
