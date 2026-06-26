@@ -12,7 +12,8 @@ const getAssetQuote = async (ticker) => {
         api_key: METAL_API_KEY,
         base: 'USD',
         currencies: ticker
-      }
+      },
+      timeout: 7000 // Fail fast — don't hang the serverless function
     });
 
     console.log('Quote response:', response.data);

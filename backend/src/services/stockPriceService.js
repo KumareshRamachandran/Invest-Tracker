@@ -11,7 +11,8 @@ const getStockQuote = async (ticker) => {
       params: {
         symbol: ticker,
         token: FINNHUB_API_KEY
-      }
+      },
+      timeout: 7000 // Fail fast — don't hang the serverless function
     });
     return response.data;
   } catch (error) {
@@ -34,7 +35,8 @@ const getHistoricalData = async (ticker) => {
           from: start,
           to: end,
           token: FINNHUB_API_KEY
-        }
+        },
+        timeout: 7000 // Fail fast — don't hang the serverless function
       }
     );
 
