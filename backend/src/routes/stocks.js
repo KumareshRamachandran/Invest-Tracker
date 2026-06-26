@@ -105,8 +105,9 @@ router.get('/', authenticateUser, async (req, res) => {
 
     if (error) throw error;
     res.json(data);
-  } catch {
-    res.status(500).json({ error: 'Failed to fetch stocks' });
+  } catch (error) {
+    console.error('Error fetching stocks:', error);
+    res.status(500).json({ error: error?.message || 'Failed to fetch stocks' });
   }
 });
 
@@ -143,12 +144,15 @@ router.post('/', authenticateUser, async (req, res) => {
 
     const quote = await stockPriceService.getStockQuote(ticker);
 
+    // If Finnhub is down / rate-limited, fall back to buy_price so the stock is still saved
+    const currentPrice = quote?.c && quote.c > 0 ? quote.c : parsedBuyPrice;
+
     const stockData = {
       name: name.trim(),
       ticker: ticker.toUpperCase().trim(),
       shares: parsedShares,
       buy_price: parsedBuyPrice,
-      current_price: quote.c,
+      current_price: currentPrice,
       target_price: parsedTargetPrice,
       is_in_watchlist: false,
       user_id: req.user.id,
