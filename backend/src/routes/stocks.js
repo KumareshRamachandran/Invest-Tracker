@@ -115,7 +115,7 @@ router.get('/:ticker/history', async (req, res) => {
     const { ticker } = req.params;
     const history = [];
     const today = new Date();
-    let currentPrice = (await stockPriceService.getQuote(ticker))?.currentPrice || 100;
+    let currentPrice = (await stockPriceService.getStockQuote(ticker))?.c || 100;
 
     for (let i = 30; i >= 0; i--) {
       const date = new Date(today);

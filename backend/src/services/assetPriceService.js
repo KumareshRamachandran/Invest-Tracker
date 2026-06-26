@@ -1,6 +1,4 @@
 import axios from 'axios';
-import Stock from '../models/Stock.js';
-import supabase from '../config/supabase.js';
 
 const METAL_API_KEY = process.env.METAL_API_KEY;
 const METAL_BASE_URL = 'https://api.metalpriceapi.com/v1';

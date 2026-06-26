@@ -12,12 +12,20 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  'https://track-portfolio.vercel.app',
+  'https://invest-tracker-pi.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:3000'
+];
+
+// Allow additional origins via environment variable (e.g., your Vercel frontend URL)
+if (process.env.FRONTEND_URL) {
+  allowedOrigins.push(process.env.FRONTEND_URL);
+}
+
 const corsOptions = {
-  origin: [
-    'https://track-portfolio.vercel.app',
-    'https://invest-tracker-pi.vercel.app',
-    'http://localhost:5173'
-  ],
+  origin: allowedOrigins,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
@@ -47,8 +55,12 @@ app.use('/api/news', newsRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// Only start listening when running locally (not in Vercel serverless)
+if (process.env.NODE_ENV !== 'production' || process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}
 
 export default app;
+
